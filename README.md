@@ -6,6 +6,9 @@
 - **Floors And Walls:** `Soon`
 ## Compile And Run:
 ```sh
+# Open Source Directory
+cd src
+
 # Compile The Program
 g++ main.cpp -o main -lSDL2 -lSDL2_image
 
