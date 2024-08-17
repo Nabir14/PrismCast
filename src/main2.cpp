@@ -145,7 +145,7 @@ int main(){
 		      if(drawEnd >= h){
 		                drawEnd = h - 1;
 	              }
-	              SDL_Color wallColor;
+	 /*             SDL_Color wallColor;
 	              switch(map[mapX][mapY]){
 	              	        case 1:
 	              	        	wallColor.r = 255;
@@ -162,6 +162,32 @@ int main(){
 	              	        	wallColor.g = 255;
 	              	        	wallColor.b = 255;
 	              }
+	*/
+		      int texNum = map[mapX][mapY] - 1;
+		      double wallX;
+		      if(side == 0){
+		            wallX = posY + perpWallDist * rayDirY;
+		      }else{
+			    wallX = posX + perpWallDist * rayDirX;
+		      }
+		      int texX = int(wallX * double(texWidth));
+		      if(side == 0 && rayDirX > 0){
+			    texX = texWidth - texX - 1;
+		      }else if(side == 1 && rayDirY){
+	      		    texX = texWidth - texX - 1;
+		      }
+		      double step = 1.0 * texHeight / lineHeight;
+		      double texPos = (drawStart - h / 2 + lineHeight / 2) * step;
+		      for(int y = drawStart; y < drawEnd; y++){
+		      	    int texY = (int)texPos & texHeight - 1;
+			    texPos += step;
+			    Uint32 color = texture[texNum][texHeight * texY + texX];
+			    if(side == 1){
+			          color = (color >> 1) & 8355711;
+			    }
+			    buffer[y][x] = color;
+		      }
+
 		      SDL_SetRenderDrawColor(renderer, wallColor.r, wallColor.g, wallColor.b, 255);
 		      if(side == 1){
 		                SDL_SetRenderDrawColor(renderer, wallColor.r / 2, wallColor.g / 2, wallColor.b / 2, 255);
