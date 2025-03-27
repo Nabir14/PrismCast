@@ -3,7 +3,7 @@
 **PrismCast** is a raycaster made using [SDL2](https://wiki.libsdl.org/) [C++](https://en.m.wikipedia.org/wiki/C%2B%2B).
 - **Base:** `Yes`
 - **Textures:** `In Progress`
-- **Floors And Walls:** `Soon`
+- **Floor And Ceiling:** `Soon`
 ## Compile And Run:
 ```sh
 # Open Source Directory
